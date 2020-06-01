@@ -26,8 +26,8 @@ var getOptimalGap = function (players, width) {
   return ((CLOUD_WIDTH - GAP * 6) - players.length * width) / (players.length - 1);
 };
 
-var getPlayerColor = function (plyaer) {
-  return plyaer === 'Вы' ? '#f00' : 'hsl(240, ' + Math.floor(Math.random() * 101) + '%, 50%)';
+var getPlayerColor = function (player) {
+  return player === 'Вы' ? '#f00' : 'hsl(240, ' + Math.floor(Math.random() * 101) + '%, 50%)';
 };
 
 var getOptimalX = function (players, i) {
@@ -35,6 +35,7 @@ var getOptimalX = function (players, i) {
 };
 
 var drawText = function (ctx) {
+  ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', CLOUD_X + GAP, 3 * GAP + FONT_GAP);
   ctx.fillText('Список результатов:', CLOUD_X + GAP, (7 * GAP) / 2 + 2 * FONT_GAP);
@@ -46,29 +47,24 @@ var drawBar = function (ctx, arr, i, times) {
 };
 
 var drawHistogram = function (players, times, ctx) {
-  var nameOrdinate;
-  var timeOrdinate;
+  players.forEach(function (item, i) {
+    var nameOrdinate = CLOUD_HEIGHT - GAP / 2;
+    var timeOrdinate = CLOUD_HEIGHT - 2 * GAP - FONT_GAP - (times[i] * (BAR_HEIGHT / getMaxElement(times)));
+    var currentTime = Math.floor(times[i]);
+    var optimalX = getOptimalX(players, i);
 
-  players.forEach(function (item, i, arr) {
-    nameOrdinate = CLOUD_HEIGHT - GAP / 2;
-    timeOrdinate = CLOUD_HEIGHT - 2 * GAP - FONT_GAP - (times[i] * (BAR_HEIGHT / getMaxElement(times)));
-
-    ctx.fillText(item, getOptimalX(arr, i), nameOrdinate);
-    ctx.fillText(Math.floor(times[i]), getOptimalX(arr, i), timeOrdinate);
+    ctx.fillStyle = '#000';
+    ctx.fillText(item, optimalX, nameOrdinate);
+    ctx.fillText(currentTime, optimalX, timeOrdinate);
 
     ctx.fillStyle = getPlayerColor(item);
-    drawBar(ctx, arr, i, times);
-    ctx.fillStyle = '#000';
+    drawBar(ctx, players, i, times);
   });
 };
 
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, SHADOW_COLOR);
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_COLOR);
-
-  ctx.fillStyle = '#000';
-
   drawText(ctx);
-
   drawHistogram(players, times, ctx);
 };
