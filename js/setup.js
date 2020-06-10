@@ -38,7 +38,7 @@ var getWizard = function (wizardParameters) {
 };
 
 
-var renderWizard = function (wizards) {
+var renderWizards = function (wizards) {
   var similarListElement = document.querySelector('.setup-similar-list');
   var fragment = document.createDocumentFragment();
 
@@ -57,6 +57,6 @@ var showSetupWindow = function () {
 
 showSetupWindow();
 var wizardsParameters = createWizard(COUNT_OF_WIZARDS);
-renderWizard(wizardsParameters);
+renderWizards(wizardsParameters);
 
 
