@@ -50,7 +50,7 @@ var renderWizards = function (wizards) {
   similarListElement.appendChild(fragment);
 };
 
-//==============FormValidation====================
+// ==============FormValidation====================
 
 var onPopupEscPress = function (evt) {
   if (evt.key === 'Escape') {
@@ -64,16 +64,16 @@ var onFocusInput = function () {
 
   setupUserName.addEventListener('focus', function () {
     document.removeEventListener('keydown', onPopupEscPress);
-  })
-}
+  });
+};
 
 var onBlurInput = function () {
   var setupUserName = document.querySelector('.setup-user-name');
 
   setupUserName.addEventListener('blur', function () {
     document.addEventListener('keydown', onPopupEscPress);
-  })
-}
+  });
+};
 
 var showSetupWindow = function () {
   var setupOverlay = document.querySelector('.setup');
@@ -85,7 +85,7 @@ var hideSetupWindow = function () {
   var setupOverlay = document.querySelector('.setup');
   setupOverlay.querySelector('.setup-similar').classList.add('hidden');
   setupOverlay.classList.add('hidden');
-}
+};
 
 var openPopup = function () {
   showSetupWindow();
@@ -113,7 +113,7 @@ var addSetupOpenListeners = function () {
       openPopup();
     }
   });
-}
+};
 
 var addSetupCloseListeners = function () {
   var setupClose = document.querySelector('.setup-close');
@@ -127,36 +127,36 @@ var addSetupCloseListeners = function () {
       closePopup();
     }
   });
-}
+};
 
-//=====================CharacterPartsColors==================
+// =====================CharacterPartsColors==================
 
 var getRandomWizardColor = function (item, colors) {
   var currentStyle = item.style.fill;
   var newStyle = getRandomValue(colors);
 
-  while (currentStyle === newStyle){
+  while (currentStyle === newStyle) {
     newStyle = getRandomValue(colors);
   }
 
   return newStyle;
-}
+};
 
 var setRandomWizardColor = function (dataColor, characterPart, partsColors) {
   var characterPartColor = getRandomWizardColor(characterPart, partsColors);
   characterPart.style.fill = characterPartColor;
   dataColor.value = characterPartColor;
-}
+};
 
 var getRandomFireballColor = function (colors) {
   return getRandomValue(colors);
-}
+};
 
 var setRandomFireballColor = function (dataColor, fireball, fireballColors) {
   var fireballColor = getRandomFireballColor(fireballColors);
   fireball.style.backgroundColor = fireballColor;
   dataColor.value = fireballColor;
-}
+};
 
 var onCoatClick = function () {
   var wizardCoat = document.querySelector('.wizard-coat');
@@ -164,8 +164,8 @@ var onCoatClick = function () {
 
   wizardCoat.addEventListener('click', function () {
     setRandomWizardColor(dataCoatColor, wizardCoat, WIZARDS_COLORS);
-  })
-}
+  });
+};
 
 var onEyesClick = function () {
   var wizardEyes = document.querySelector('.wizard-eyes');
@@ -173,8 +173,8 @@ var onEyesClick = function () {
 
   wizardEyes.addEventListener('click', function () {
     setRandomWizardColor(dataEyesColor, wizardEyes, WIZARDS_EYES);
-  })
-}
+  });
+};
 
 var onFireballClick = function () {
   var wizardFireball = document.querySelector('.setup-fireball-wrap');
@@ -182,14 +182,14 @@ var onFireballClick = function () {
 
   wizardFireball.addEventListener('click', function () {
     setRandomFireballColor(dataFireballColor, wizardFireball, WIZARDS_FIREBALLS);
-  })
-}
+  });
+};
 
 var changeCharacterColorsEvent = function () {
   onCoatClick();
   onEyesClick();
   onFireballClick();
-}
+};
 
 var wizardsParameters = createWizard(COUNT_OF_WIZARDS);
 renderWizards(wizardsParameters);
@@ -198,15 +198,3 @@ addSetupOpenListeners();
 addSetupCloseListeners();
 
 changeCharacterColorsEvent();
-
-
-
-
-
-
-
-
-
-
-
-
