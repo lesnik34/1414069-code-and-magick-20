@@ -54,12 +54,11 @@ var renderWizards = function (wizards) {
 
 var onPopupEscPress = function (evt) {
   if (evt.key === 'Escape') {
-    evt.preventDefault();
     closePopup();
   }
 };
 
-var onFocusInput = function () {
+var focusInput = function () {
   var setupUserName = document.querySelector('.setup-user-name');
 
   setupUserName.addEventListener('focus', function () {
@@ -67,7 +66,7 @@ var onFocusInput = function () {
   });
 };
 
-var onBlurInput = function () {
+var blurInput = function () {
   var setupUserName = document.querySelector('.setup-user-name');
 
   setupUserName.addEventListener('blur', function () {
@@ -89,8 +88,8 @@ var hideSetupWindow = function () {
 
 var openPopup = function () {
   showSetupWindow();
-  onFocusInput();
-  onBlurInput();
+  focusInput();
+  blurInput();
 
   document.addEventListener('keydown', onPopupEscPress);
 };
@@ -133,13 +132,10 @@ var addSetupCloseListeners = function () {
 
 var getRandomWizardColor = function (item, colors) {
   var currentStyle = item.style.fill;
-  var newStyle = getRandomValue(colors);
 
-  while (currentStyle === newStyle) {
-    newStyle = getRandomValue(colors);
-  }
-
-  return newStyle;
+  return getRandomValue(colors.filter(function (color) {
+    return color !== currentStyle;
+  }));
 };
 
 var setRandomWizardColor = function (dataColor, characterPart, partsColors) {
@@ -158,7 +154,7 @@ var setRandomFireballColor = function (dataColor, fireball, fireballColors) {
   dataColor.value = fireballColor;
 };
 
-var onCoatClick = function () {
+var coatClick = function () {
   var wizardCoat = document.querySelector('.wizard-coat');
   var dataCoatColor = document.querySelector('.coat-color');
 
@@ -167,7 +163,7 @@ var onCoatClick = function () {
   });
 };
 
-var onEyesClick = function () {
+var eyesClick = function () {
   var wizardEyes = document.querySelector('.wizard-eyes');
   var dataEyesColor = document.querySelector('.eyes-color');
 
@@ -176,7 +172,7 @@ var onEyesClick = function () {
   });
 };
 
-var onFireballClick = function () {
+var fireballClick = function () {
   var wizardFireball = document.querySelector('.setup-fireball-wrap');
   var dataFireballColor = document.querySelector('.fireball-color');
 
@@ -186,9 +182,9 @@ var onFireballClick = function () {
 };
 
 var changeCharacterColorsEvent = function () {
-  onCoatClick();
-  onEyesClick();
-  onFireballClick();
+  coatClick();
+  eyesClick();
+  fireballClick();
 };
 
 var wizardsParameters = createWizard(COUNT_OF_WIZARDS);
