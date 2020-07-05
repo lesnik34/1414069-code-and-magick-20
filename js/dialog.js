@@ -72,7 +72,7 @@
     dialogHandle.addEventListener('mousedown', function (evt) {
       window.onMouseDown(evt);
     });
-  }
+  };
 
   moveWindow();
 })();

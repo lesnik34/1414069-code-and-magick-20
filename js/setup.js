@@ -11,9 +11,9 @@
 
       for (var i = 0; i < count; i++) {
         wizards.push({
-          name: setup.getRandomValue(window.options.WIZARDS_NAMES) + ' ' + setup.getRandomValue(window.options.WIZARDS_SURNAMES),
-          coatColor: setup.getRandomValue(window.options.WIZARDS_COLORS),
-          eyesColor: setup.getRandomValue(window.options.WIZARDS_EYES)
+          name: window.setup.getRandomValue(window.options.WIZARDS_NAMES) + ' ' + window.setup.getRandomValue(window.options.WIZARDS_SURNAMES),
+          coatColor: window.setup.getRandomValue(window.options.WIZARDS_COLORS),
+          eyesColor: window.setup.getRandomValue(window.options.WIZARDS_EYES)
         });
       }
 
@@ -30,7 +30,7 @@
 
       return wizardClone;
     }
-  }
+  };
 })();
 
 

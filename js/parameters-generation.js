@@ -12,5 +12,5 @@
     getRandomFireballColor: function (colors) {
       return window.setup.getRandomValue(colors);
     }
-  }
+  };
 })();

@@ -12,5 +12,5 @@
       fireball.style.backgroundColor = fireballColor;
       dataColor.value = fireballColor;
     }
-  }
+  };
 })();

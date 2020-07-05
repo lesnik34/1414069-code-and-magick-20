@@ -12,7 +12,7 @@
       return player === 'Вы' ? '#f00' : 'hsl(240, ' + Math.floor(Math.random() * 101) + '%, 50%)';
     },
     getOptimalX: function (players, i) {
-      return window.options.CLOUD_X + 3 * window.options.GAP + (stat.getOptimalGap(players, window.options.TEXT_WIDTH) + window.options.TEXT_WIDTH) * i;
+      return window.options.CLOUD_X + 3 * window.options.GAP + (window.stat.getOptimalGap(players, window.options.TEXT_WIDTH) + window.options.TEXT_WIDTH) * i;
     }
-  }
-})()
+  };
+})();

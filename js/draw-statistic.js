@@ -7,7 +7,7 @@
   };
 
   window.drawStatistic = {
-    drawText:  function (ctx) {
+    drawText: function (ctx) {
       ctx.fillStyle = '#000';
       ctx.font = '16px PT Mono';
       ctx.fillText('Ура вы победили!', window.options.CLOUD_X + window.options.GAP, 3 * window.options.GAP + window.options.FONT_GAP);
@@ -28,5 +28,5 @@
         drawBar(ctx, players, i, times);
       });
     }
-  }
+  };
 })();

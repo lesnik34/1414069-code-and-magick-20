@@ -3,7 +3,7 @@
 (function () {
   var onPopupEscPress = function (evt) {
     if (evt.key === 'Escape') {
-      popupActions.closePopup();
+      window.popupActions.closePopup();
     }
   };
 
@@ -40,7 +40,7 @@
 
     setupDialogElement.style.top = window.options.SETUP_POPUP_Y + 'px';
     setupDialogElement.style.left = window.options.SETUP_POPUP_X_PERCENTS + '%';
-  }
+  };
 
   window.popupActions = {
     openPopup: function () {
@@ -56,6 +56,6 @@
 
       document.removeEventListener('keydown', onPopupEscPress);
     }
-  }
+  };
 
 })();
