@@ -38,8 +38,8 @@
   var setDefaultLocation = function () {
     var setupDialogElement = document.querySelector('.setup');
 
-    setupDialogElement.style.top = window.options.SETUP_POPUP_Y + 'px';
-    setupDialogElement.style.left = window.options.SETUP_POPUP_X_PERCENTS + '%';
+    setupDialogElement.style.top = '';
+    setupDialogElement.style.left = '';
   };
 
   window.popupActions = {
