@@ -82,7 +82,7 @@
 
     setupSubmit.addEventListener('click', function (evt) {
       evt.preventDefault();
-      window.backend.save(new FormData(setupWizardForm), window.popupActions.closePopup, window.dialog.errorHandler);
+      window.backend.save(new FormData(setupWizardForm), window.dialog.uploadHandler, window.dialog.errorHandler);
     });
   };
 
@@ -99,6 +99,12 @@
 
       node.textContent = errorMessage;
       document.body.insertAdjacentElement('afterbegin', node);
+    },
+    loadHandler: function (loadData) {
+      window.rendering.renderWizards(loadData);
+    },
+    uploadHandler: function () {
+      window.popupActions.closePopup();
     }
   };
 })();

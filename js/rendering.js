@@ -13,16 +13,18 @@
     window.drawStatistic.drawHistogram(players, times, ctx);
   };
 
-  var renderWizards = function (wizards) {
-    var similarListElement = document.querySelector('.setup-similar-list');
-    var fragment = document.createDocumentFragment();
+  window.backend.load(window.dialog.loadHandler, window.dialog.errorHandler);
 
-    for (var i = 0; i < window.options.COUNT_OF_WIZARDS; i++) {
-      fragment.appendChild(window.setup.getWizard(window.setup.getRandomValue(wizards)));
+  window.rendering = {
+    renderWizards: function (wizards) {
+      var similarListElement = document.querySelector('.setup-similar-list');
+      var fragment = document.createDocumentFragment();
+
+      wizards.slice(0, window.options.COUNT_OF_WIZARDS).forEach(function (wizard) {
+        fragment.appendChild(window.setup.getWizard(wizard));
+      });
+
+      similarListElement.appendChild(fragment);
     }
-
-    similarListElement.appendChild(fragment);
   };
-
-  window.backend.load(renderWizards, window.dialog.errorHandler);
 })();
