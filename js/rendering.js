@@ -17,13 +17,12 @@
     var similarListElement = document.querySelector('.setup-similar-list');
     var fragment = document.createDocumentFragment();
 
-    wizards.forEach(function (wizard) {
-      fragment.appendChild(window.setup.getWizard(wizard));
-    });
+    for (var i = 0; i < window.options.COUNT_OF_WIZARDS; i++) {
+      fragment.appendChild(window.setup.getWizard(window.setup.getRandomValue(wizards)));
+    }
 
     similarListElement.appendChild(fragment);
   };
 
-  var wizardsParameters = window.setup.createWizard(window.options.COUNT_OF_WIZARDS);
-  renderWizards(wizardsParameters);
+  window.backend.load(renderWizards, window.dialog.errorHandler);
 })();
