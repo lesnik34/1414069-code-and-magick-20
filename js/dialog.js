@@ -75,4 +75,36 @@
   };
 
   moveWindow();
+
+  var uploadSetup = function () {
+    var setupSubmit = document.querySelector('.setup-submit');
+    var setupWizardForm = document.querySelector('.setup-wizard-form');
+
+    setupSubmit.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      window.backend.save(new FormData(setupWizardForm), window.dialog.uploadHandler, window.dialog.errorHandler);
+    });
+  };
+
+  uploadSetup();
+
+  window.dialog = {
+    errorHandler: function (errorMessage) {
+      var node = document.createElement('div');
+      node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+      node.style.position = 'absolute';
+      node.style.left = 0;
+      node.style.right = 0;
+      node.style.fontSize = '30px';
+
+      node.textContent = errorMessage;
+      document.body.insertAdjacentElement('afterbegin', node);
+    },
+    loadHandler: function (loadData) {
+      window.rendering.renderWizards(loadData);
+    },
+    uploadHandler: function () {
+      window.popupActions.closePopup();
+    }
+  };
 })();
