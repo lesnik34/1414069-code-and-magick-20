@@ -1,12 +1,23 @@
 'use strict';
 
 (function () {
+  var wizardsData = [];
+
+  var onCoatChange = window.debounce(function () {
+    window.debounce(window.util.updateWizards(wizardsData));
+  })
+
+  var onEyesChange = window.debounce(function () {
+    window.debounce(window.util.updateWizards(wizardsData));
+  })
+
   var coatClick = function () {
     var wizardCoat = document.querySelector('.wizard-coat');
     var dataCoatColor = document.querySelector('.coat-color');
 
     wizardCoat.addEventListener('click', function () {
       window.parametersSet.setRandomWizardColor(dataCoatColor, wizardCoat, window.options.WIZARDS_COLORS);
+      onCoatChange();
     });
   };
 
@@ -16,6 +27,7 @@
 
     wizardEyes.addEventListener('click', function () {
       window.parametersSet.setRandomWizardColor(dataEyesColor, wizardEyes, window.options.WIZARDS_EYES);
+      onEyesChange();
     });
   };
 
@@ -101,7 +113,8 @@
       document.body.insertAdjacentElement('afterbegin', node);
     },
     loadHandler: function (loadData) {
-      window.rendering.renderWizards(loadData);
+      wizardsData = loadData;
+      window.util.updateWizards(wizardsData);
     },
     uploadHandler: function () {
       window.popupActions.closePopup();

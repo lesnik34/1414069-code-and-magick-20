@@ -21,6 +21,7 @@
   var LOAD_URL = 'https://javascript.pages.academy/code-and-magick/data';
   var UPLOAD_URL = 'https://javascript.pages.academy/code-and-magick';
   var TIMEOUT_IN_MS = 10000;
+
   var STATUS_CODE = {
     OK: 200
   };

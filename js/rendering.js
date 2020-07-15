@@ -18,6 +18,9 @@
   window.rendering = {
     renderWizards: function (wizards) {
       var similarListElement = document.querySelector('.setup-similar-list');
+
+      similarListElement.innerHTML = '';
+
       var fragment = document.createDocumentFragment();
 
       wizards.slice(0, window.options.COUNT_OF_WIZARDS).forEach(function (wizard) {
