@@ -5,11 +5,11 @@
 
   var onCoatChange = window.debounce(function () {
     window.debounce(window.util.updateWizards(wizardsData));
-  })
+  });
 
   var onEyesChange = window.debounce(function () {
     window.debounce(window.util.updateWizards(wizardsData));
-  })
+  });
 
   var coatClick = function () {
     var wizardCoat = document.querySelector('.wizard-coat');

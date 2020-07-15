@@ -6,7 +6,7 @@
     var dataEyesColor = document.querySelector('.eyes-color');
     var rank = 0;
 
-    if (wizard.colorCoat === dataCoatColor.value ) {
+    if (wizard.colorCoat === dataCoatColor.value) {
       rank += 2;
     }
     if (wizard.colorEyes === dataEyesColor.value) {
@@ -29,15 +29,15 @@
   window.util = {
     updateWizards: function (wizards) {
 
-      window.rendering.renderWizards(
-        wizards.slice().sort(function (leftItem, rightItem) {
+      window.rendering.renderWizards(wizards.slice()
+        .sort(function (leftItem, rightItem) {
           var rankDiff = getRank(rightItem) - getRank(leftItem);
           if (rankDiff === 0) {
             rankDiff = namesComparator(leftItem.name, rightItem.name);
           }
           return rankDiff;
-      }))
+        }));
 
     }
-  }
+  };
 })();
